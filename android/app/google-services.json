@@ -1,0 +1,82 @@
+{
+  "project_info": {
+    "project_number": "439628553649",
+    "project_id": "iedeo-43e6a",
+    "storage_bucket": "iedeo-43e6a.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:439628553649:android:20b25fe0bf8d853644b190",
+        "android_client_info": {
+          "package_name": "com.example.daily_routine_follow_tracker"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "439628553649-5hq9msq5c3gebngl5tn7osioopfks105.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAApBzsE0Jq1qEpVeMiERRWTEZfC8gZzMA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "439628553649-5hq9msq5c3gebngl5tn7osioopfks105.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "439628553649-i88shfmjfvp3dlnj2e49dv06olco8oil.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.ideoProjectDoc"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:439628553649:android:a5676fae029ba63b44b190",
+        "android_client_info": {
+          "package_name": "com.example.ideo_project_doc"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "439628553649-5hq9msq5c3gebngl5tn7osioopfks105.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAApBzsE0Jq1qEpVeMiERRWTEZfC8gZzMA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "439628553649-5hq9msq5c3gebngl5tn7osioopfks105.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "439628553649-i88shfmjfvp3dlnj2e49dv06olco8oil.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.ideoProjectDoc"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
