@@ -1,0 +1,40 @@
+type User @table {
+  displayName: String!
+  createdAt: Timestamp!
+  email: String
+  photoUrl: String
+}
+
+type DailyEntry @table {
+  user: User!
+  entryDate: Date!
+  createdAt: Timestamp!
+  notes: String
+  mood: String
+}
+
+type ActivityType @table {
+  name: String!
+  createdAt: Timestamp!
+  description: String
+}
+
+type ActivityLog @table {
+  dailyEntry: DailyEntry!
+  activityType: ActivityType!
+  quantity: Int!
+  createdAt: Timestamp!
+  notes: String
+}
+
+type Tag @table {
+  user: User
+  name: String!
+  createdAt: Timestamp!
+}
+
+type DailyEntryTag @table(key: ["dailyEntry", "tag"]) {
+  dailyEntry: DailyEntry!
+  tag: Tag!
+  createdAt: Timestamp!
+}
