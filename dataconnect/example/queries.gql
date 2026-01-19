@@ -1,0 +1,37 @@
+mutation CreateDailyEntry($userId: UUID!, $entryDate: Date!, $mood: String, $notes: String) @auth(level: USER) {
+  dailyEntry_insert(data: {
+    userId: $userId,
+    entryDate: $entryDate,
+    mood: $mood,
+    notes: $notes
+  })
+}
+
+query GetDailyEntry($id: UUID!) @auth(level: USER) {
+  dailyEntry(id: $id) {
+    id
+    userId
+    createdAt
+    entryDate
+    mood
+    notes
+  }
+}
+
+mutation AddActivityLog($activityTypeId: UUID!, $dailyEntryId: UUID!, $createdAt: Timestamp!, $notes: String, $quantity: Int!) @auth(level: USER) {
+  activityLog_insert(data: {
+    activityTypeId: $activityTypeId,
+    dailyEntryId: $dailyEntryId,
+    createdAt: $createdAt,
+    notes: $notes,
+    quantity: $quantity
+  })
+}
+
+query ListActivityTypes @auth(level: PUBLIC, insecureReason: "This operation is safe to expose to the public") {
+  activityTypes {
+    id
+    name
+    description
+  }
+}

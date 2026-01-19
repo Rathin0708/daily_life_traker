@@ -1,0 +1,92 @@
+mutation CreateSeedData @transaction @auth(level: PUBLIC, insecureReason: "This mutation is used to populate the database with seed data and is safe to expose to the public") {
+  user_insertMany(data: [
+    {
+      id: "67792d3c-9b7a-48e3-a990-d25a2c318dac",
+      displayName: "demouser1",
+      createdAt: "2024-04-26T00:00:00Z",
+      email: "demouser1@example.com",
+      photoUrl: "https://example.com/demouser1.jpg"
+    },
+    {
+      id: "9a4b1c2d-5e6f-4a7b-8c9d-3e2f1a4d6c8e",
+      displayName: "demouser2",
+      createdAt: "2024-04-27T00:00:00Z",
+      email: "demouser2@example.com",
+      photoUrl: "https://example.com/demouser2.jpg"
+    }
+  ])
+  activityType_insertMany(data: [
+    {
+      id: "a1b2c3d4-e5f6-4789-a0b1-c2d3e4f57a9b",
+      name: "Exercise",
+      createdAt: "2024-04-26T00:00:00Z",
+      description: "Physical activity"
+    },
+    {
+      id: "f7e8d9c0-b1a2-4567-890a-bcdef0123456",
+      name: "Meditation",
+      createdAt: "2024-04-27T00:00:00Z",
+      description: "Mental relaxation"
+    }
+  ])
+  tag_insertMany(data: [
+    {
+      id: "b8d9c0a1-2e3f-4a56-9b7c-d8e9f0123456",
+      name: "Morning Routine",
+      createdAt: "2024-04-26T00:00:00Z",
+      userId: "67792d3c-9b7a-48e3-a990-d25a2c318dac"
+    },
+    {
+      id: "c9e0d1a2-3f4e-4b67-8a8b-e9f012345678",
+      name: "Evening Routine",
+      createdAt: "2024-04-27T00:00:00Z",
+      userId: "9a4b1c2d-5e6f-4a7b-8c9d-3e2f1a4d6c8e"
+    }
+  ])
+  dailyEntry_insertMany(data: [
+    {
+      id: "d0a1b2c3-4f5e-4c78-9b9a-f0123456789a",
+      userId: "67792d3c-9b7a-48e3-a990-d25a2c318dac",
+      createdAt: "2024-04-26T08:00:00Z",
+      entryDate: "2024-04-26",
+      mood: "Good",
+      notes: "Started the day with a run."
+    },
+    {
+      id: "e1b2c3d4-5a6b-4d89-8c0c-123456789abc",
+      userId: "9a4b1c2d-5e6f-4a7b-8c9d-3e2f1a4d6c8e",
+      createdAt: "2024-04-27T22:00:00Z",
+      entryDate: "2024-04-27",
+      mood: "Relaxed",
+      notes: "Finished the day with meditation."
+    }
+  ])
+  dailyEntryTag_insertMany(data: [
+    {
+      dailyEntryId: "d0a1b2c3-4f5e-4c78-9b9a-f0123456789a",
+      tagId: "b8d9c0a1-2e3f-4a56-9b7c-d8e9f0123456",
+      createdAt: "2024-04-26T08:00:00Z"
+    },
+    {
+      dailyEntryId: "e1b2c3d4-5a6b-4d89-8c0c-123456789abc",
+      tagId: "c9e0d1a2-3f4e-4b67-8a8b-e9f012345678",
+      createdAt: "2024-04-27T22:00:00Z"
+    }
+  ])
+  activityLog_insertMany(data: [
+    {
+      activityTypeId: "a1b2c3d4-e5f6-4789-a0b1-c2d3e4f57a9b",
+      dailyEntryId: "d0a1b2c3-4f5e-4c78-9b9a-f0123456789a",
+      createdAt: "2024-04-26T08:15:00Z",
+      notes: "30 minutes run",
+      quantity: 1
+    },
+    {
+      activityTypeId: "f7e8d9c0-b1a2-4567-890a-bcdef0123456",
+      dailyEntryId: "e1b2c3d4-5a6b-4d89-8c0c-123456789abc",
+      createdAt: "2024-04-27T22:15:00Z",
+      notes: "15 minutes meditation",
+      quantity: 1
+    }
+  ])
+}
