@@ -71,24 +71,27 @@ class AuthViewModel extends ChangeNotifier {
     int newExp = _currentUser!.experience + amount;
     int newLevel = _currentUser!.level;
     int newHunterRank = _currentUser!.hunterRank;
+    
+    // Calculate XP for level calculation
+    int newCurrentXP = (_currentUser?.currentXP ?? 0) + amount;
+    int nextLevelXP = newLevel * 1000; // Standard formula: level * 1000 XP per level
 
     // Level up logic: Level * 1000 EXP for next level
-    int expNeeded = newLevel * 1000;
-    while (newExp >= expNeeded) {
-      newExp -= expNeeded;
+    while (newCurrentXP >= nextLevelXP) {
+      newCurrentXP -= nextLevelXP;
       newLevel++;
-      expNeeded = newLevel * 1000;
+      nextLevelXP = newLevel * 1000;
     }
     
     // Calculate new hunter rank based on level
     newHunterRank = HunterStatsCalculator.calculateHunterRank(newLevel);
     
     // Update stats if provided
-    int newStrength = _currentUser!.strength;
-    int newIntelligence = _currentUser!.intelligence;
-    int newAgility = _currentUser!.agility;
-    int newDiscipline = _currentUser!.discipline;
-    int newWillpower = _currentUser!.willpower;
+    int newStrength = _currentUser!.strength ?? 0;
+    int newIntelligence = _currentUser!.intelligence ?? 0;
+    int newAgility = _currentUser!.agility ?? 0;
+    int newDiscipline = _currentUser!.discipline ?? 0;
+    int newWillpower = _currentUser!.willpower ?? 0;
     
     if (statIncreases != null) {
       newStrength += statIncreases['strength'] ?? 0;
@@ -101,6 +104,8 @@ class AuthViewModel extends ChangeNotifier {
     await _repository.updateUserStats(
       level: newLevel, 
       experience: newExp,
+      currentXP: newCurrentXP,
+      nextLevelXP: nextLevelXP,
       hunterRank: newHunterRank,
       strength: newStrength,
       intelligence: newIntelligence,
@@ -119,6 +124,8 @@ class AuthViewModel extends ChangeNotifier {
       averageFollowScore: _currentUser!.averageFollowScore,
       level: newLevel,
       experience: newExp,
+      currentXP: newCurrentXP,
+      nextLevelXP: nextLevelXP,
       hunterRank: newHunterRank,
       strength: newStrength,
       intelligence: newIntelligence,
@@ -139,8 +146,17 @@ class AuthViewModel extends ChangeNotifier {
     if (currentStreak > longest) {
       longest = currentStreak;
     }
+    
+    // Calculate current XP for the update
+    int currentXP = _currentUser?.currentXP ?? 0;
+    int nextLevelXP = _currentUser?.nextLevelXP ?? ((_currentUser?.level ?? 1) * 1000);
 
-    await _repository.updateUserStreak(currentStreak: currentStreak, longestStreak: longest);
+    await _repository.updateUserStreak(
+      currentStreak: currentStreak, 
+      longestStreak: longest,
+      currentXP: currentXP,
+      nextLevelXP: nextLevelXP
+    );
 
     _currentUser = AppUser(
       uid: _currentUser!.uid,
@@ -151,6 +167,8 @@ class AuthViewModel extends ChangeNotifier {
       averageFollowScore: _currentUser!.averageFollowScore,
       level: _currentUser!.level,
       experience: _currentUser!.experience,
+      currentXP: currentXP,
+      nextLevelXP: nextLevelXP,
     );
     notifyListeners();
   }

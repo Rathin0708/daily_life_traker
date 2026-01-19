@@ -1,4 +1,5 @@
 import 'core/theme/app_theme.dart';
+import 'core/theme/solo_leveling_theme.dart';
 import 'data/repositories/auth_repository.dart';
 import 'data/repositories/routine_repository.dart';
 import 'viewmodels/auth_viewmodel.dart';
@@ -7,12 +8,14 @@ import 'viewmodels/template_viewmodel.dart';
 import 'viewmodels/calendar_viewmodel.dart';
 import 'viewmodels/analytics_viewmodel.dart';
 import 'views/auth/auth_wrapper.dart';
+import 'views/system/system_entry_screen.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'firebase_options.dart';
 import 'core/utils/hunter_stats_calculator.dart';
 import 'core/utils/penalty_zone_manager.dart';
+import 'core/utils/user_migration.dart';
 
 // We will add ViewModels here as we create them
 void main() async {
@@ -87,8 +90,8 @@ class MyApp extends StatelessWidget {
       child: MaterialApp(
         title: 'Routine Tracker',
         debugShowCheckedModeBanner: false,
-        theme: AppTheme.darkTheme,
-        home: const AuthWrapper(),
+        theme: SoloLevelingTheme.darkTheme,
+        home: const SystemEntryScreen(),
       ),
     );
   }

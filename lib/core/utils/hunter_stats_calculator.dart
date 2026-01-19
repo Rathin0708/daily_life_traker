@@ -133,7 +133,16 @@ class HunterStatsCalculator {
     }
   }
 
-  /// Calculates daily rank based on follow score
+  /// Calculates numeric daily rank based on follow score for analytics
+  static int calculateNumericDailyRank(double followScore) {
+    if (followScore >= 95) return 6; // S rank
+    if (followScore >= 85) return 5; // A rank
+    if (followScore >= 70) return 4; // B rank
+    if (followScore >= 50) return 3; // C rank
+    return 2; // D rank
+  }
+  
+  /// Calculates daily rank based on follow score for display/storage
   static String calculateDailyRank(double followScore) {
     if (followScore >= 95) return 'S';
     if (followScore >= 85) return 'A';

@@ -85,7 +85,18 @@ class AuthRepository {
     await _auth.signOut();
   }
 
-  Future<void> updateUserStats({required int level, required int experience, int? hunterRank, int? strength, int? intelligence, int? agility, int? discipline, int? willpower}) async {
+  Future<void> updateUserStats({
+    required int level, 
+    required int experience, 
+    int? currentXP, 
+    int? nextLevelXP,
+    int? hunterRank, 
+    int? strength, 
+    int? intelligence, 
+    int? agility, 
+    int? discipline, 
+    int? willpower
+  }) async {
     final user = _auth.currentUser;
     if (user == null) return;
     
@@ -93,6 +104,10 @@ class AuthRepository {
       'level': level,
       'experience': experience,
     };
+    
+    // Add XP fields if provided
+    if (currentXP != null) updateData['currentXP'] = currentXP;
+    if (nextLevelXP != null) updateData['nextLevelXP'] = nextLevelXP;
     
     // Add optional Hunter stats if provided
     if (hunterRank != null) updateData['hunterRank'] = hunterRank;
@@ -105,7 +120,16 @@ class AuthRepository {
     await _firestore.collection('users').doc(user.uid).update(updateData);
   }
 
-  Future<void> updateUserStreak({required int currentStreak, required int longestStreak, int? hunterRank, DateTime? penaltyActivatedAt, int? penaltyEscapeTasksRequired, int? penaltyCount}) async {
+  Future<void> updateUserStreak({
+    required int currentStreak, 
+    required int longestStreak, 
+    int? hunterRank, 
+    DateTime? penaltyActivatedAt, 
+    int? penaltyEscapeTasksRequired, 
+    int? penaltyCount,
+    int? currentXP,
+    int? nextLevelXP
+  }) async {
     final user = _auth.currentUser;
     if (user == null) return;
     
@@ -113,6 +137,10 @@ class AuthRepository {
       'currentStreak': currentStreak,
       'longestStreak': longestStreak,
     };
+    
+    // Add XP fields if provided
+    if (currentXP != null) updateData['currentXP'] = currentXP;
+    if (nextLevelXP != null) updateData['nextLevelXP'] = nextLevelXP;
     
     // Add optional Hunter fields if provided
     if (hunterRank != null) updateData['hunterRank'] = hunterRank;

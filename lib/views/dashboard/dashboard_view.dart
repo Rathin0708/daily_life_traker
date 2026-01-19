@@ -2,10 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import '../../viewmodels/auth_viewmodel.dart';
 import '../../data/models/user_model.dart';
-import 'today_view.dart';
+import 'anime_today_view.dart';
 import '../routine_templates/template_list_view.dart';
 import '../calendar/calendar_view.dart';
-import '../analytics/analytics_view.dart';
+import '../analytics/anime_analytics_view.dart';
 import '../auth/auth_wrapper.dart';
 
 class DashboardView extends StatefulWidget {
@@ -19,9 +19,9 @@ class _DashboardViewState extends State<DashboardView> {
   int _selectedIndex = 0;
 
   final List<Widget> _screens = [
-    const TodayView(),
+    const AnimeTodayView(),
     const CalendarView(),
-    const AnalyticsView(),
+    const AnimeAnalyticsView(),
     const TemplateListView(),
   ];
 

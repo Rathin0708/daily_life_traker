@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import '../../viewmodels/routine_viewmodel.dart';
 import '../../viewmodels/auth_viewmodel.dart';
-import 'system_evaluation_view.dart';
+import 'anime_system_evaluation.dart';
 import '../../data/models/routine_models.dart';
 import '../../core/widgets/progress_rings.dart';
 import '../../core/widgets/hunter_progress_ring.dart';
@@ -672,7 +672,7 @@ class TodayView extends StatelessWidget {
           ElevatedButton.icon(
             onPressed: () {
               Navigator.of(context).push(
-                MaterialPageRoute(builder: (_) => const SystemEvaluationView()),
+                MaterialPageRoute(builder: (_) => const AnimeSystemEvaluation()),
               );
             },
             icon: const Icon(Icons.nightlight_round),

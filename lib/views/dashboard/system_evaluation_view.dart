@@ -43,7 +43,7 @@ class SystemEvaluationView extends StatelessWidget {
                 color: AppColors.cardBg,
                 borderRadius: BorderRadius.circular(20),
                 border: Border.all(
-                  color: _getRankColor(dailyRank),
+                  color: _getRankColor(dailyRank as String),
                   width: 2,
                 ),
               ),
@@ -52,15 +52,15 @@ class SystemEvaluationView extends StatelessWidget {
                   Text(
                     'DAILY RANK',
                     style: TextStyle(
-                      color: _getRankColor(dailyRank),
+                      color: _getRankColor(dailyRank as String),
                       fontSize: 16,
                       fontWeight: FontWeight.bold,
                     ),
                   ),
                   Text(
-                    dailyRank,
+                    dailyRank as String,
                     style: TextStyle(
-                      color: _getRankColor(dailyRank),
+                      color: _getRankColor(dailyRank as String),
                       fontSize: 64,
                       fontWeight: FontWeight.bold,
                     ),

@@ -8,13 +8,17 @@ class AppUser {
   final int level;
   final int experience;
   
+  // XP system properties
+  final int? currentXP;
+  final int? nextLevelXP;
+  
   // New Hunter System Fields
   final int hunterRank; // 1=E, 2=D, 3=C, 4=B, 5=A, 6=S, 7=Monarch
-  final int strength;
-  final int intelligence;
-  final int agility;
-  final int discipline;
-  final int willpower;
+  final int? strength;
+  final int? intelligence;
+  final int? agility;
+  final int? discipline;
+  final int? willpower;
   final int penaltyCount; // Number of penalty zone activations
   final DateTime? penaltyActivatedAt; // When penalty zone was activated
   final int penaltyEscapeTasksRequired; // How many extra tasks needed to exit penalty
@@ -28,6 +32,9 @@ class AppUser {
     this.averageFollowScore = 0.0,
     this.level = 1,
     this.experience = 0,
+    // XP system
+    this.currentXP = 0,
+    this.nextLevelXP = 100,
     // New Hunter fields
     this.hunterRank = 1, // E-rank initially
     this.strength = 0,
@@ -50,6 +57,9 @@ class AppUser {
       'averageFollowScore': averageFollowScore,
       'level': level,
       'experience': experience,
+      // XP system
+      'currentXP': currentXP,
+      'nextLevelXP': nextLevelXP,
       // New Hunter fields
       'hunterRank': hunterRank,
       'strength': strength,
@@ -73,6 +83,9 @@ class AppUser {
       averageFollowScore: (map['averageFollowScore'] ?? 0).toDouble(),
       level: map['level'] ?? 1,
       experience: map['experience'] ?? 0,
+      // XP system
+      currentXP: map['currentXP'] ?? 0,
+      nextLevelXP: map['nextLevelXP'] ?? 100,
       // New Hunter fields
       hunterRank: map['hunterRank'] ?? 1,
       strength: map['strength'] ?? 0,
